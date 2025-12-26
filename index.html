@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>I love u Alishba❤️</title>
+  <meta charset="UTF-8">
+  <title>For Alishba ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
+      margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: pink;
-      font-family: Arial;
+      background: #ffe6ea;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
     }
 
     .heart {
-      position: relative;
       width: 120px;
       height: 120px;
       background: red;
+      position: relative;
       transform: rotate(-45deg);
       animation: beat 1s infinite;
     }
@@ -25,11 +29,11 @@
     .heart::before,
     .heart::after {
       content: "";
-      position: absolute;
       width: 120px;
       height: 120px;
       background: red;
       border-radius: 50%;
+      position: absolute;
     }
 
     .heart::before {
@@ -49,16 +53,14 @@
     }
 
     h1 {
-      position: absolute;
-      top: 70%;
-      color: #b00000;
+      margin-top: 40px;
+      color: #b00020;
     }
   </style>
 </head>
+
 <body>
-
   <div class="heart"></div>
-  <h1>I love You Alishba❤️</h1>
-
+  <h1>I Love You Alishba ❤️</h1>
 </body>
 </html>
