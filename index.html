@@ -8,13 +8,16 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       background: #ffe6ea;
       font-family: Arial, sans-serif;
       flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .heart {
@@ -24,6 +27,7 @@
       position: relative;
       transform: rotate(-45deg);
       animation: beat 1s infinite;
+      flex-shrink: 0;
     }
 
     .heart::before,
@@ -53,32 +57,41 @@
     }
 
     h1 {
-      margin-top: 40px;
+      margin-top: 30px;
       color: #b00020;
+      font-size: clamp(22px, 5vw, 28px);
+    }
+
+    .message {
+      max-width: 600px;
+      margin-top: 15px;
+      font-size: clamp(16px, 4.5vw, 18px);
+      line-height: 1.6;
+      color: #333;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
   </style>
 </head>
 
 <body>
   <div class="heart"></div>
-  <h1>
-    
- Alishba ❤️
 
-<br>
-    I don’t know when it happened, but somewhere between small talks and silent moments, you became someone my heart feels safe with
-You make ordinary days feel special and simple moments feel unforgettable
+  <h1>I Love You Alishba ❤️</h1>
 
-This little page is nothing compared to what I feel for you, but I wanted to leave something that stays just like my feelings
-No matter where life takes us a part of me will always smile when I think of you
+  <div class="message">
+    I don’t know when it happened, but somewhere between small talks and silent moments,
+    you became someone my heart feels safe with. You make ordinary days feel special
+    and simple moments feel unforgettable.<br><br>
 
-You’re not just someone I care about…
-you’re someone my heart chose, quietly and completely
-    
-I 💖 You Alishba Meri jaan
+    This little page is nothing compared to what I feel for you, but I wanted to leave
+    something that stays — just like my feelings. No matter where life takes us,
+    a part of me will always smile when I think of you.<br><br>
 
-Abdul Ahad 💖</h1>
+    You’re not just someone I care about… you’re someone my heart chose,
+    quietly and completely.
+    <br><br>
+    — <b>Abdul Ahad</b> 💖
+  </div>
 </body>
 </html>
-
-
