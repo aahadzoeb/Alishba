@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I love u Alishba❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: pink;
+      font-family: Arial;
+    }
+
+    .heart {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: beat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -60px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 60px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.1) rotate(-45deg); }
+      100% { transform: scale(1) rotate(-45deg); }
+    }
+
+    h1 {
+      position: absolute;
+      top: 70%;
+      color: #b00000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart"></div>
+  <h1>I love You Alishba❤️</h1>
+
+</body>
+</html>
