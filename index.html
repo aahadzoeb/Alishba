@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For Alishba ❤️</title>
-    <!-- Romantic Fonts -->
+    <!-- Google Fonts for a premium look -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -15,9 +15,9 @@
         }
 
         body {
-            /* Stronger pink gradient so it doesn't look white */
-            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
-            height: 100vh;
+            /* Vibrant gradient background to ensure it never looks white */
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,42 +26,163 @@
             padding: 20px;
         }
 
-        /* Animated Hearts in Background */
-        .heart-bg {
-            position: absolute;
+        /* Floating Hearts Background */
+        .bg-elements {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
+            pointer-events: none;
         }
 
-        /* The Main Card */
+        /* The Card Design */
         .card {
-            background: white;
-            width: 100%;
-            max-width: 400px; /* Perfect for mobile and center-aligned for laptop */
-            padding: 40px 30px;
-            border-radius: 25px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
-            text-align: center;
             position: relative;
             z-index: 10;
-            border: 4px solid #fff;
-            animation: popIn 1s ease-out;
+            background: white;
+            width: 100%;
+            max-width: 380px; /* Fits perfectly on all phones */
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            text-align: center;
+            border: 5px solid #fff;
+            animation: fadeIn 1.2s ease-out;
         }
 
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Top Decorative Image/Icon Area */
+        .card-header {
+            background: #ff4d6d;
+            padding: 40px 20px;
+            color: white;
+            position: relative;
         }
 
         .main-heart {
-            font-size: 50px;
-            color: #ff4d6d;
-            animation: pulse 1.5s infinite;
+            font-size: 60px;
+            animation: beat 1.2s infinite;
             display: inline-block;
-            margin-bottom: 10px;
         }
 
-        @keyframes pulse {
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Card Content */
+        .card-body {
+            padding: 30px 25px;
+            background: #fff;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4d6d;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        /* The "Lovely" Card Signature */
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ff4d6d;
+            border-top: 1px solid #ffe5ec;
+            padding-top: 15px;
+            display: block;
+        }
+
+        /* Floating Animation Elements */
+        .floating-item {
+            position: absolute;
+            color: white;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Responsive adjustments for tiny phones */
+        @media (max-width: 350px) {
+            h1 { font-size: 2rem; }
+            .message { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-elements" id="bg-elements"></div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="main-heart">❤️</div>
+        </div>
+        
+        <div class="card-body">
+            <h1>For Alishba</h1>
+            
+            <div class="message">
+                I was looking for the right words, but then I realized that no words could ever truly capture how much you mean to me. You are the kind of beautiful that isn't just seen, but felt deep in the soul.<br><br>
+                
+                Every time I think of you, I find a new reason to smile. You’ve turned my world into a brighter place just by being yourself, and I am so grateful for every laugh and every moment we share.<br><br>
+                
+                You are my favorite thought and my safest place.
+            </div>
+
+            <span class="signature">Your dear Ahad</span>
+        </div>
+    </div>
+
+    <script>
+        function createFloatingItem() {
+            const container = document.getElementById('bg-elements');
+            const item = document.createElement('div');
+            const icons = ['❤️', '💖', '✨', '🌸', '💕'];
+            
+            item.className = 'floating-item';
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            
+            // Random horizontal position
+            item.style.left = Math.random() * 100 + 'vw';
+            
+            // Random size
+            item.style.fontSize = Math.random() * 20 + 15 + 'px';
+            
+            // Random duration
+            const duration = Math.random() * 4 + 4;
+            item.style.animationDuration = duration + 's';
+            
+            container.appendChild(item);
+
+            // Clean up memory
+            setTimeout(() => {
+                item.remove();
+            }, duration * 1000);
+        }
+
+        // Create a new floating heart every 400ms
+        setInterval(createFloatingItem, 400);
+    </script>
+</body>
+</html>
