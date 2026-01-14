@@ -1,98 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For Alishba ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Alishba ❤️</title>
+    <!-- Google Fonts for a romantic touch -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --soft-pink: #ffccd5;
+            --dark-pink: #c9184a;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #ffe6ea;
-      font-family: Arial, sans-serif;
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
 
-    .heart {
-      width: 120px;
-      height: 120px;
-      background: red;
-      position: relative;
-      transform: rotate(-45deg);
-      animation: beat 1s infinite;
-      flex-shrink: 0;
-    }
+        /* Floating Hearts Animation */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    .heart::before,
-    .heart::after {
-      content: "";
-      width: 120px;
-      height: 120px;
-      background: red;
-      border-radius: 50%;
-      position: absolute;
-    }
+        .floating-heart {
+            position: absolute;
+            color: var(--primary-pink);
+            opacity: 0.6;
+            animation: float 6s linear infinite;
+        }
 
-    .heart::before {
-      top: -60px;
-      left: 0;
-    }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
 
-    .heart::after {
-      left: 60px;
-      top: 0;
-    }
+        /* The Card Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+        }
 
-    @keyframes beat {
-      0% { transform: scale(1) rotate(-45deg); }
-      50% { transform: scale(1.1) rotate(-45deg); }
-      100% { transform: scale(1) rotate(-45deg); }
-    }
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.5s ease;
+        }
 
-    h1 {
-      margin-top: 30px;
-      color: #b00020;
-      font-size: clamp(22px, 5vw, 28px);
-    }
+        .main-heart {
+            font-size: 60px;
+            color: var(--primary-pink);
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
 
-    .message {
-      max-width: 600px;
-      margin-top: 15px;
-      font-size: clamp(16px, 4.5vw, 18px);
-      line-height: 1.6;
-      color: #333;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-  </style>
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--dark-pink);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .message-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-in-out;
+            color: #444;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .message-box.show {
+            max-height: 1000px;
+        }
+
+        .btn {
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: var(--dark-pink);
+            transform: translateY(-3px);
+        }
+
+        .signature {
+            margin-top: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--dark-pink);
+            display: none;
+        }
+
+        .show-sig {
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="heart"></div>
 
-  <h1>I Love You Alishba ❤️</h1>
+    <div class="heart-bg" id="heartBg"></div>
 
-  <div class="message">
-    I don’t know when it happened but somewhere between small talks and silent moments
-    you became someone my heart feels safe with You make ordinary days feel special
-    and simple moments feel unforgettable<br><br>
+    <div class="container">
+        <div class="card">
+            <div class="main-heart">❤️</div>
+            <h1>For Alishba</h1>
+            
+            <div class="message-box" id="message">
+                I don’t know when it happened, but somewhere between small talks and silent moments, 
+                you became someone my heart feels safe with. You make ordinary days feel special 
+                and simple moments feel unforgettable.<br><br>
 
-    This little page is nothing compared to what I feel for you but I wanted to leave
-    something that stays  just like my feelings No matter where life takes us
-    a part of me will always smile when I think of you<br><br>
+                This little page is nothing compared to what I feel for you, but I wanted to leave 
+                something that stays—just like my feelings. No matter where life takes us, 
+                a part of me will always smile when I think of you.<br><br>
 
-    You’re not just someone I care about… you’re someone my heart chose
-    quietly and completely
-    <br><br>
-    — <b>Abdul Ahad</b> 💖
-  </div>
+                You’re not just someone I care about… you’re someone my heart chose 
+                <b>quietly and completely.</b>
+            </div>
+
+            <div class="signature" id="signature">— Always yours, Abdul Ahad 💖</div>
+            
+            <button class="btn" id="openBtn" onclick="revealMessage()">Open My Heart</button>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts background
+        function createHearts() {
+            const container = document.getElementById('heartBg');
+            const heartIcons = ['❤️', '💖', '💗', '💕', '🌸'];
+            
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        function revealMessage() {
+            const msg = document.getElementById('message');
+            const sig = document.getElementById('signature');
+            const btn = document.getElementById('openBtn');
+            
+            msg.classList.add('show');
+            sig.classList.add('show-sig');
+            
+            btn.style.display = 'none';
+        }
+
+        // Start animation on load
+        window.onload = createHearts;
+    </script>
 </body>
 </html>
-
