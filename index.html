@@ -3,198 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Alishba ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>For My Alishba ❤️</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-pink: #ff4d6d;
-            --soft-pink: #fff0f3;
-            --dark-red: #800f2f;
+            --bg-color: #fff5f7;
+            --accent-color: #ff4d6d;
+            --text-dark: #4a0e0e;
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
+            background: var(--bg-color);
+            background: radial-gradient(circle, #fff5f7 0%, #ffdee9 100%);
+            font-family: 'Quicksand', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
+            padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* Floating Animation Elements */
-        .heart-bg {
+        /* Floating Background Animation */
+        .hearts-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: -1;
             pointer-events: none;
-            z-index: 0;
         }
 
-        .floating-heart {
-            position: absolute;
-            color: var(--primary-pink);
-            opacity: 0.5;
-            animation: float 7s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(110vh) rotate(0deg) scale(0); opacity: 0; }
-            50% { opacity: 0.7; }
-            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
-        }
-
-        /* Card Styling */
-        .container {
-            position: relative;
-            z-index: 10;
-            width: 90%;
-            max-width: 480px;
-        }
-
+        /* Responsive Card Container */
         .card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 40px 30px;
-            border-radius: 40px 5px 40px 5px; /* Elegant asymmetric corners */
-            box-shadow: 0 20px 45px rgba(255, 77, 109, 0.25);
-            border: 2px solid #ffffff;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 500px; /* Limits width on laptops */
+            padding: clamp(20px, 8vw, 40px); /* Responsive padding */
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             text-align: center;
-            transform: scale(0.95);
-            animation: appear 1s forwards;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
         }
 
-        @keyframes appear {
-            to { transform: scale(1); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .main-heart {
-            font-size: 55px;
-            margin-bottom: 10px;
+        .heart-icon {
+            font-size: clamp(40px, 10vw, 60px);
+            color: var(--accent-color);
+            margin-bottom: 15px;
             display: inline-block;
-            animation: beat 1.2s infinite;
+            animation: heartbeat 1.5s infinite;
         }
 
-        @keyframes beat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: var(--dark-red);
-            font-size: 2.8rem;
-            margin: 10px 0 20px 0;
+            color: var(--accent-color);
+            font-size: clamp(2rem, 8vw, 3rem); /* Fluid font size */
+            margin-bottom: 20px;
         }
 
-        .message-box {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 1.5s ease-in-out;
-            color: #444;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            text-align: left;
-            padding: 0 10px;
+        .content {
+            font-size: clamp(1rem, 4vw, 1.15rem); /* Fluid font size */
+            line-height: 1.7;
+            color: var(--text-dark);
+            font-weight: 500;
         }
 
-        .message-box.show {
-            max-height: 1000px;
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #ff4d6d, #c9184a);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(201, 24, 74, 0.3);
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(201, 24, 74, 0.4);
+        .content p {
+            margin-bottom: 15px;
         }
 
         .signature {
-            margin-top: 30px;
             font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--dark-red);
-            opacity: 0;
-            transition: opacity 1s ease 1s;
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            color: var(--accent-color);
+            margin-top: 25px;
+            display: block;
         }
 
-        .show-sig {
-            opacity: 1;
+        /* Responsive adjustments for very small phones */
+        @media (max-height: 600px) {
+            .card {
+                padding: 15px;
+            }
+            .heart-icon { margin-bottom: 5px; }
+            h1 { margin-bottom: 10px; }
         }
 
-        .sparkle {
-            color: #ffb703;
+        .floating-emoji {
+            position: absolute;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="heart-bg" id="heartBg"></div>
+    <div class="hearts-container" id="hearts"></div>
 
-    <div class="container">
-        <div class="card">
-            <div class="main-heart">❤️</div>
-            <h1>Dearest Alishba</h1>
-            
-            <div class="message-box" id="message">
-                I was looking for the right words, but then I realized that no words could ever truly capture how much you mean to me. You are the kind of beautiful that isn't just seen, but felt deep in the soul. <br><br>
-                
-                Every time I think of you, I find a new reason to smile. You’ve turned my world into a brighter place just by being yourself, and I am so grateful for every laugh, every word, and every quiet moment we share. You are my favorite thought, my safest place, and the one I always want to talk to at the end of the day.<br><br>
-                
-                You are truly special to me, Alishba, and I promise to always cherish the way you make my heart feel. <span class="sparkle">✨</span>
-            </div>
-
-            <div class="signature" id="signature">Your dear Ahad</div>
-            
-            <button class="btn" id="openBtn" onclick="revealMessage()">Read My Note</button>
-        </div>
-    </div>
-
-    <script>
-        // Create falling/floating hearts
-        function createHearts() {
-            const container = document.getElementById('heartBg');
-            const emojis = ['❤️', '💖', '✨', '🌸', '💕'];
-            
-            for (let i = 0; i < 30; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 7 + 's';
-                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-                container.appendChild(heart);
-            }
-        }
-
-        function revealMessage() {
-            const msg = document.getElementById('message');
-            const sig = document.getElementById('signature');
-            const btn = document.getElementById('openBtn');
-            
-            msg.classList.add('show');
-            sig.classList.add('show-sig');
-            btn.style.display = 'none';
-        }
-
-        window.onload = createHearts;
-    </script>
-</body>
-</html>
+    <main class="card">
+        <div class="heart-icon">❤️</div>
+        <h1>For Alishba</h1>
+        
+        <div class="content">
+            <p>
+                To the one who holds the key to my peace: Alishba, meeting you was like finally hearing a melody I’ve been trying to hum my whole life. You have this beautiful way of turning my ordinary world into something extraordinary just by being in it.
+            </p>
+            <p>
+                Whether we are talking for hours or just sharing a quiet moment, my heart feels at home with you. You are more than just a person to me; you are the warmth
