@@ -3,150 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Alishba ❤️</title>
-    <!-- Romantic Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>To My Love, Alishba ❤️</title>
+    <!-- Aesthetic Fonts from Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* Base & Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --primary-pink: #ff4d6d;
+            --secondary-pink: #ff9a9e;
+            --bg-light: #fef1f5;
+            --text-dark: #333;
         }
 
         body {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            background: linear-gradient(135deg, var(--secondary-pink) 0%, var(--bg-light) 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Poppins', sans-serif;
-            /* FIXED: Changed hidden to auto to allow scrolling if text is long */
             overflow-x: hidden;
             overflow-y: auto; 
-            padding: 40px 20px; /* Added padding for top and bottom */
+            padding: 40px 15px; 
+            transition: opacity 1s ease-in;
         }
+
+        /* Pre-loader and Reveal Effect */
+        #loader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: opacity 0.5s ease-out;
+        }
+        .heart-pulse {
+            font-size: 80px;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+        .hidden { opacity: 0; visibility: hidden; }
 
         /* Floating Hearts Background */
-        .bg-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
+        .bg-elements { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .floating-item {
+            position: absolute;
+            color: #ffe5ec; /* Lighter heart color */
+            opacity: 0.8;
+            animation: floatUp linear forwards;
         }
 
-        /* The Card Design */
+        /* The Main Card */
         .card {
             position: relative;
             z-index: 10;
             background: white;
             width: 100%;
-            max-width: 400px; 
+            max-width: 450px; /* Slightly wider for a grander look */
             border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
             text-align: center;
-            border: 5px solid #fff;
             animation: fadeIn 1.2s ease-out;
-            /* FIXED: Ensures card doesn't get cut off on small screens */
-            margin-bottom: 20px; 
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Photo Slot */
+        .photo-slot {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: -60px auto 20px; /* Pulls it up over the header */
+            border: 6px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #fefefe;
+            overflow: hidden;
+        }
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Header */
         .card-header {
-            background: #ff4d6d;
-            padding: 40px 20px;
+            background: var(--primary-pink);
+            padding: 50px 20px 20px;
             color: white;
+            border-radius: 30px 30px 0 0;
+            position: relative;
         }
 
-        .main-heart {
-            font-size: 60px;
-            animation: beat 1.2s infinite;
-            display: inline-block;
+        .card-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
-        @keyframes beat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
+        /* Body */
         .card-body {
-            padding: 30px 25px;
+            padding: 20px 30px 40px;
             background: #fff;
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: #ff4d6d;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            color: var(--primary-pink);
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #ffe5ec;
         }
 
         .message {
-            color: #444;
+            color: var(--text-dark);
             font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 25px;
-            font-weight: 400;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
         }
 
         .signature {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: #ff4d6d;
-            border-top: 1px solid #ffe5ec;
+            font-size: 2.2rem;
+            color: var(--primary-pink);
+            border-top: 1px solid #ffedef;
             padding-top: 15px;
             display: block;
+            text-align: right;
         }
 
-        .floating-item {
-            position: absolute;
-            color: white;
-            opacity: 0.8;
-            pointer-events: none;
-            animation: floatUp linear forwards;
-        }
-
+        /* Floating Animation */
         @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0.1; }
+            5% { opacity: 0.8; }
+            95% { opacity: 0.8; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .card { border-radius: 15px; }
+            .card-header { padding-top: 40px; }
+            .card-header h2 { font-size: 1rem; }
+            .photo-slot { width: 100px; height: 100px; margin-top: -50px; }
+            h1 { font-size: 2.5rem; }
+            .message { font-size: 1rem; }
+            .signature { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Reveal Loader -->
+    <div id="loader">
+        <span class="heart-pulse">💖</span>
+    </div>
+
     <div class="bg-elements" id="bg-elements"></div>
 
-    <div class="card">
+    <div class="card hidden" id="love-card">
+        
         <div class="card-header">
-            <div class="main-heart">❤️</div>
+            <h2>A message written just for you</h2>
+        </div>
+
+        <div class="photo-slot">
+            <!-- IMPORTANT: Replace 'your_photo.jpg' with an actual photo of Alishba or the two of you. -->
+            <img src="your_photo.jpg" alt="Photo of Alishba"> 
         </div>
         
         <div class="card-body">
-            <h1>For Alishba</h1>
+            <h1>My Dearest Alishba,</h1>
             
             <div class="message">
-                I was looking for the right words, but then I realized that no words could ever truly capture how much you mean to me. You are the kind of beautiful that isn't just seen, but felt deep in the soul.<br><br>
+                **"I choose you. And I'll choose you over and over and over. Without pause, without a doubt, in a heartbeat. I'll keep choosing you."**<br><br>
                 
-                Every time I think of you, I find a new reason to smile. You’ve turned my world into a brighter place just by being yourself, and I am so grateful for every laugh and every moment we share.<br><br>
+                You are not just a part of my life, you *are* the best part of it. Every moment with you feels like a quiet, perfect melody that I never want to end. You possess a kindness and a light that makes the world a thousand times better.<br><br>
                 
-                You are my favorite thought and my safest place.
+                Thank you for being my constant, my inspiration, and the only person who can make me laugh until my cheeks hurt. My heart is yours, today and always.
             </div>
 
-            <span class="signature">Your dear Ahad</span>
+            <span class="signature">Forever Yours, Ahad</span>
         </div>
     </div>
 
     <script>
+        // --- Functional Scripts ---
+
+        // 1. Reveal/Pre-loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            const card = document.getElementById('love-card');
+            
+            // Fade out the loader and reveal the card
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                card.classList.remove('hidden');
+                
+                // Remove loader from DOM after transition
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500); // Loader displays for 1.5 seconds
+        });
+
+
+        // 2. Floating Heart Background Logic
         function createFloatingItem() {
             const container = document.getElementById('bg-elements');
             const item = document.createElement('div');
@@ -164,7 +238,8 @@
             setTimeout(() => { item.remove(); }, duration * 1000);
         }
 
-        setInterval(createFloatingItem, 400);
+        // Generate a new floating item every 400 milliseconds
+        setInterval(createFloatingItem, 400); 
     </script>
 </body>
 </html>
