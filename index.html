@@ -11,15 +11,11 @@
             --deep-purple: #240046;
             --mid-purple: #5a189a;
             --soft-purple: #9d4edd;
-            --glass: rgba(255, 255, 255, 0.15);
+            --glass: rgba(255, 255, 255, 0.12);
             --text-white: #ffffff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background: linear-gradient(45deg, #10002b, #240046, #5a189a);
@@ -40,7 +36,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Pre-loader */
+        /* Pre-loader / Cover */
         #loader {
             position: fixed;
             inset: 0;
@@ -50,18 +46,28 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 0.8s ease;
+            transition: opacity 1s ease, visibility 1s;
+            cursor: pointer; /* Hint that they can click */
         }
 
         .heart-loader {
-            font-size: 50px;
+            font-size: 70px;
             animation: beat 1.2s infinite;
-            filter: drop-shadow(0 0 15px var(--soft-purple));
+            filter: drop-shadow(0 0 20px var(--soft-purple));
+            user-select: none;
         }
 
         @keyframes beat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
+            50% { transform: scale(1.2); }
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            opacity: 0.8;
+            text-transform: uppercase;
         }
 
         /* Floating Background Particles */
@@ -75,7 +81,7 @@
 
         .particle {
             position: absolute;
-            opacity: 0.5;
+            opacity: 0.4;
             animation: floatUp linear infinite;
         }
 
@@ -84,17 +90,17 @@
             position: relative;
             z-index: 10;
             width: 90%;
-            max-width: 480px;
+            max-width: 450px;
             background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            border-radius: 30px;
             padding: 40px 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            transform: translateY(30px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            transform: translateY(40px);
             opacity: 0;
-            transition: all 1s ease-out;
+            transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
         }
 
@@ -105,33 +111,32 @@
 
         .profile-area {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .profile-img {
-            width: 130px;
-            height: 130px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 4px solid var(--soft-purple);
-            padding: 5px;
+            border: 3px solid #e0aaff;
+            padding: 4px;
             object-fit: cover;
-            box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+            background: rgba(255,255,255,0.1);
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
             color: #e0aaff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .love-letter {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 1.7;
             color: #f3e8ff;
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 300;
         }
 
@@ -142,41 +147,40 @@
 
         .signature {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
+            font-size: 2rem;
             text-align: right;
             color: #e0aaff;
             display: block;
-            margin-top: 20px;
         }
 
         @keyframes floatUp {
             from { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
             to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Mobile Optimization */
         @media (max-width: 480px) {
-            h1 { font-size: 2.4rem; }
-            .love-letter { font-size: 1rem; line-height: 1.6; }
+            h1 { font-size: 2.2rem; }
             .envelope { padding: 30px 20px; }
+            .love-letter { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="loader">
+    <!-- Clickable Loader Cover -->
+    <div id="loader" onclick="revealCard()">
         <div class="heart-loader">💜</div>
-        <p style="margin-top: 15px; letter-spacing: 2px; font-size: 0.8rem;">UNFOLDING LOVE...</p>
+        <p class="loader-text">Tap the heart to unfold</p>
     </div>
 
     <div class="particles" id="particles"></div>
 
     <div class="envelope" id="main-card">
         <div class="profile-area">
-            <!-- Replace with Alishba's photo -->
-            <img src="your_photo.jpg" alt="Alishba" class="profile-img" onerror="this.src='https://via.placeholder.com/150/9d4edd/ffffff?text=Alishba'">
+            <!-- Ensure your_photo.jpg is in the same folder as this file -->
+            <img src="your_photo.jpg" alt="Alishba" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/adventurer/svg?seed=Alishba&backgroundColor=b6e3f4'">
         </div>
 
         <h1>My Dearest Alishba,</h1>
@@ -186,7 +190,7 @@
             
             They say that stars are the most beautiful things in the universe, but they clearly haven't seen the light in your eyes when you smile. You are my calm in every storm and the melody in my silence. <br><br>
             
-            I’ve come to realize that <span class="highlight">love isn't about what’s written in a bio or shown on a screen; it’s about the quiet strength of my heart choosing you every single day.</span> No matter how things change on the surface, my feelings for you are etched in something far more permanent. <br><br>
+            I’ve come to realize that <span class="highlight">love isn't about what’s written in a bio or shown on a screen; it’s about the quiet strength of my heart choosing you every single day.</span> <br><br>
             
             Thank you for being my person. I am yours, completely and always.
         </div>
@@ -195,45 +199,45 @@
     </div>
 
     <script>
-        // Reveal Logic
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                const card = document.getElementById('main-card');
-                
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    card.classList.add('reveal');
-                }, 800);
-            }, 2000);
-        });
+        const loader = document.getElementById('loader');
+        const card = document.getElementById('main-card');
 
-        // Floating Particles Logic
+        // Function to reveal the card
+        function revealCard() {
+            if (loader.style.display === 'none') return;
+            
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                card.classList.add('reveal');
+            }, 1000);
+        }
+
+        // Auto-reveal after 4 seconds even if they don't click
+        setTimeout(revealCard, 4000);
+
+        // Particle background logic
         function createParticle() {
             const container = document.getElementById('particles');
             const particle = document.createElement('div');
-            const icons = ['💜', '✨', '🌸', '💎', '☁️', '🤍'];
+            const icons = ['💜', '✨', '🌸', '🤍', '🌙'];
             
             particle.className = 'particle';
             particle.innerText = icons[Math.floor(Math.random() * icons.length)];
             
             const startX = Math.random() * 100;
             const size = Math.random() * 15 + 15;
-            const duration = Math.random() * 5 + 5;
+            const duration = Math.random() * 5 + 7;
             
             particle.style.left = startX + 'vw';
             particle.style.fontSize = size + 'px';
             particle.style.animationDuration = duration + 's';
             
             container.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, duration * 1000);
+            setTimeout(() => { particle.remove(); }, duration * 1000);
         }
 
-        setInterval(createParticle, 300);
+        setInterval(createParticle, 400);
     </script>
 </body>
 </html>
