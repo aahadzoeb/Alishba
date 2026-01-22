@@ -3,242 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To My Love, Alishba ❤️</title>
-    <!-- Aesthetic Fonts from Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>For My Forever | Alishba ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* Base & Reset */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            /* Purple Theme Palette */
-            --primary-purple: #8e44ad;
-            --secondary-purple: #c8b6ff;
-            --deep-purple: #5e17eb;
-            --bg-light: #f3e8ff;
-            --text-dark: #2d004d;
+            --deep-purple: #240046;
+            --mid-purple: #5a189a;
+            --soft-purple: #9d4edd;
+            --glass: rgba(255, 255, 255, 0.15);
+            --text-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            /* Changed background to Purple Gradient */
-            background: linear-gradient(135deg, #9d4edd 0%, #e0aaff 100%);
+            background: linear-gradient(45deg, #10002b, #240046, #5a189a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            overflow-y: auto; 
-            padding: 40px 15px; 
-            transition: opacity 1s ease-in;
+            color: var(--text-white);
         }
 
-        /* Pre-loader and Reveal Effect */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Pre-loader */
         #loader {
+            position: fixed;
+            inset: 0;
+            background: #10002b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease;
+        }
+
+        .heart-loader {
+            font-size: 50px;
+            animation: beat 1.2s infinite;
+            filter: drop-shadow(0 0 15px var(--soft-purple));
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Floating Background Particles */
+        .particles {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            /* Purple Loader Background */
-            background: linear-gradient(135deg, #7b2cbf, #c8b6ff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            transition: opacity 0.5s ease-out;
+            pointer-events: none;
+            z-index: 1;
         }
-        .heart-pulse {
-            font-size: 80px;
-            animation: pulse 1s infinite alternate;
-        }
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.15); }
-        }
-        .hidden { opacity: 0; visibility: hidden; }
 
-        /* Floating Items Background */
-        .bg-elements { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .floating-item {
+        .particle {
             position: absolute;
-            color: #ffffff; /* White/Light purple items look best on dark purple */
-            opacity: 0.6;
-            animation: floatUp linear forwards;
+            opacity: 0.5;
+            animation: floatUp linear infinite;
         }
 
-        /* The Main Card */
-        .card {
+        /* Main Card */
+        .envelope {
             position: relative;
             z-index: 10;
-            background: white;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 30px;
-            box-shadow: 0 25px 50px rgba(45, 0, 77, 0.3);
+            width: 90%;
+            max-width: 480px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s ease-out;
             text-align: center;
-            animation: fadeIn 1.2s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        .envelope.reveal {
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        /* Photo Slot */
-        .photo-slot {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: -60px auto 20px;
-            border: 6px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            background-color: #fefefe;
-            overflow: hidden;
-        }
-        .photo-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Header */
-        .card-header {
-            background: var(--primary-purple);
-            padding: 50px 20px 20px;
-            color: white;
-            border-radius: 30px 30px 0 0;
+        .profile-area {
             position: relative;
+            margin-bottom: 30px;
         }
 
-        .card-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-
-        /* Body */
-        .card-body {
-            padding: 20px 30px 40px;
-            background: #fff;
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--soft-purple);
+            padding: 5px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: var(--primary-purple);
-            font-size: 3.2rem;
+            font-size: 3rem;
             margin-bottom: 20px;
-            text-shadow: 1px 1px 2px #f3e8ff;
+            color: #e0aaff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .message {
-            color: var(--text-dark);
-            font-size: 1.05rem;
+        .love-letter {
+            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 30px;
+            color: #f3e8ff;
             text-align: left;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: #ff99c8;
+            font-weight: 500;
         }
 
         .signature {
             font-family: 'Dancing Script', cursive;
             font-size: 2.2rem;
-            color: var(--primary-purple);
-            border-top: 1px solid #f3e8ff;
-            padding-top: 15px;
-            display: block;
             text-align: right;
+            color: #e0aaff;
+            display: block;
+            margin-top: 20px;
         }
 
-        /* Floating Animation */
         @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+            from { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Mobile Adjustments */
+        /* Mobile Optimization */
         @media (max-width: 480px) {
-            .card { border-radius: 15px; }
-            .card-header { padding-top: 40px; }
-            h1 { font-size: 2.5rem; }
-            .message { font-size: 1rem; }
+            h1 { font-size: 2.4rem; }
+            .love-letter { font-size: 1rem; line-height: 1.6; }
+            .envelope { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Reveal Loader -->
     <div id="loader">
-        <span class="heart-pulse">💜</span>
+        <div class="heart-loader">💜</div>
+        <p style="margin-top: 15px; letter-spacing: 2px; font-size: 0.8rem;">UNFOLDING LOVE...</p>
     </div>
 
-    <div class="bg-elements" id="bg-elements"></div>
+    <div class="particles" id="particles"></div>
 
-    <div class="card hidden" id="love-card">
-        
-        <div class="card-header">
-            <h2>A message written just for you</h2>
+    <div class="envelope" id="main-card">
+        <div class="profile-area">
+            <!-- Replace with Alishba's photo -->
+            <img src="your_photo.jpg" alt="Alishba" class="profile-img" onerror="this.src='https://via.placeholder.com/150/9d4edd/ffffff?text=Alishba'">
         </div>
 
-        <div class="photo-slot">
-            <!-- IMPORTANT: Replace 'your_photo.jpg' with an actual photo of Alishba -->
-            <img src="your_photo.jpg" alt="Photo of Alishba"> 
-        </div>
-        
-        <div class="card-body">
-            <h1>My Dearest Alishba,</h1>
+        <h1>My Dearest Alishba,</h1>
+
+        <div class="love-letter">
+            To the world, you might just be one person, but to me, you are the entire world. <br><br>
             
-            <div class="message">
-                "I choose you. And I'll choose you over and over and over. Without pause, without a doubt, in a heartbeat. I'll keep choosing you."<br><br>
-                
-                You are not just a part of my life, you are the best part of it. Every moment with you feels like a quiet, perfect melody that I never want to end. You possess a kindness and a light that makes the world a thousand times better.<br><br>
-                
-                Thank you for being my constant, my inspiration, and the only person who can make me laugh until my cheeks hurt. My heart is yours, today and always even though you removed me from ur bio of intagram still i love you very much.
-            </div>
-
-            <span class="signature">Forever Yours, Ahad</span>
+            They say that stars are the most beautiful things in the universe, but they clearly haven't seen the light in your eyes when you smile. You are my calm in every storm and the melody in my silence. <br><br>
+            
+            I’ve come to realize that <span class="highlight">love isn't about what’s written in a bio or shown on a screen; it’s about the quiet strength of my heart choosing you every single day.</span> No matter how things change on the surface, my feelings for you are etched in something far more permanent. <br><br>
+            
+            Thank you for being my person. I am yours, completely and always.
         </div>
+
+        <span class="signature">Forever Yours, Ahad</span>
     </div>
 
     <script>
-        // 1. Reveal Logic
+        // Reveal Logic
         window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            const card = document.getElementById('love-card');
-            
             setTimeout(() => {
+                const loader = document.getElementById('loader');
+                const card = document.getElementById('main-card');
+                
                 loader.style.opacity = '0';
-                card.classList.remove('hidden');
                 setTimeout(() => {
                     loader.style.display = 'none';
-                }, 500);
-            }, 1500);
+                    card.classList.add('reveal');
+                }, 800);
+            }, 2000);
         });
 
-
-        // 2. Floating Purple Items Logic
-        function createFloatingItem() {
-            const container = document.getElementById('bg-elements');
-            const item = document.createElement('div');
-            // Added purple/white themed emojis
-            const icons = ['💜', '🔮', '✨', '☁️', '🦄', '🎵'];
+        // Floating Particles Logic
+        function createParticle() {
+            const container = document.getElementById('particles');
+            const particle = document.createElement('div');
+            const icons = ['💜', '✨', '🌸', '💎', '☁️', '🤍'];
             
-            item.className = 'floating-item';
-            item.innerText = icons[Math.floor(Math.random() * icons.length)];
-            item.style.left = Math.random() * 100 + 'vw';
-            item.style.fontSize = Math.random() * 20 + 15 + 'px';
+            particle.className = 'particle';
+            particle.innerText = icons[Math.floor(Math.random() * icons.length)];
             
-            const duration = Math.random() * 4 + 6; // Slightly slower for elegance
-            item.style.animationDuration = duration + 's';
+            const startX = Math.random() * 100;
+            const size = Math.random() * 15 + 15;
+            const duration = Math.random() * 5 + 5;
             
-            container.appendChild(item);
-            setTimeout(() => { item.remove(); }, duration * 1000);
+            particle.style.left = startX + 'vw';
+            particle.style.fontSize = size + 'px';
+            particle.style.animationDuration = duration + 's';
+            
+            container.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
         }
 
-        setInterval(createFloatingItem, 450); 
+        setInterval(createParticle, 300);
     </script>
 </body>
 </html>
-
-
